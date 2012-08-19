@@ -1,17 +1,38 @@
 <html ng-app="TM">
 <head>
-  <title>Task Manager</title>
+  <title></title>
+  <link href="css/layout.css" rel="stylesheet" type="text/css">
+  <link href="css/theme.css" rel="stylesheet" type="text/css">
+  <link href="lib/font-awesome/css/font-awesome.css" rel="stylesheet" type="text/css">
 </head>
-<body ng-controller="Root">
+<body>
 
-  <h1>Task Manager</h1>
+  <div class="border">
 
-  <ul>
-    <li ng-repeat="list in taskLists">{{list.title}} <a ng-click="list.$remove()">remove</a></li>
-  </ul>
+    <a href=""><img class="photo" src="https://lh4.googleusercontent.com/-kRXrNRyykNI/AAAAAAAAAAI/AAAAAAAAASg/p5NienuORDU/photo.jpg"></a>
 
-  <a ng-click="add()">add</a>
+    <h1 class="name">Vojta Jina's</h1>
+    <h1>Task Manager</h1>
 
+    <ul class="tasklists">
+      <li ng-repeat="list in taskLists">
+        <div>
+          <a class="icon-chevron-right"></a>
+          <span>{{list.title}}</span>
+          <a class="icon-plus"></a>
+        </div>
+
+        <ul class="tasks">
+          <li ng-repeat="task in list.$tasks">
+            <a class="icon-check"></a> {{task.title}} <a class="icon-remove-circle"></a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+
+    <div class="footer">Powered by <a href="http://angularjs.org">AngularJS</a> &amp; <a href="https://developers.google.com/appengine/">Google AppEngine</a>.</div>
+
+  </div>
 
 
   <!-- AngularJS -->
