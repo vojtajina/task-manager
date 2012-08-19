@@ -1,0 +1,32 @@
+<html ng-app="TM">
+<head>
+  <title>Task Manager</title>
+</head>
+<body ng-controller="Root">
+
+  <h1>Task Manager</h1>
+
+  <ul>
+    <li ng-repeat="list in taskLists">{{list.title}} <a ng-click="list.$remove()">remove</a></li>
+  </ul>
+
+  <a ng-click="add()">add</a>
+
+
+
+  <!-- AngularJS -->
+  <script src="lib/angular.min.js" type="text/javascript"></script>
+
+  <!-- Task Manager APP code -->
+  <script src="js/app.js" type="text/javascript"></script>
+  <script src="js/controllers/Root.js" type="text/javascript"></script>
+  <script src="js/services/tasks.js" type="text/javascript"></script>
+  <script src="js/services/authHttp.js" type="text/javascript"></script>
+  <script src="js/model/TaskList.js" type="text/javascript"></script>
+  <script src="js/model/Task.js" type="text/javascript"></script>
+
+  <!-- Google Auth API library -->
+  <script src="https://apis.google.com/js/auth.js?onload=onAuthLibLoad"></script>
+
+</body>
+</html>
