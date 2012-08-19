@@ -6,7 +6,7 @@ TM.controller 'Root',  ($scope, TaskList, authHttp) ->
     @list.$loadTasks()
 
   $scope.listIcon = ->
-    if @tasksVisible then 'down' else 'right'
+    if @tasksVisible then 'icon-chevron-down' else 'icon-chevron-right'
 
   $scope.remove = (task) ->
     if @confirmRemove then @list.removeTask task else @confirmRemove = true

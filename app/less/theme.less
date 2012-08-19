@@ -31,43 +31,37 @@ ul {
 }
 
 
-
-ul.tasklists {
-  li {
-    div {
-      padding: 5px;
-      padding-top: 7px;
-      background: black;
-      color: white;
-      letter-spacing: 2px;
-    }
-  }
+.tasklist-row, .task-row {
+  padding: 5px;
+  padding-top: 7px;
 }
 
-ul.tasks {
-  li {
-    border-top: 2px solid gray;
-    padding: 5px;
-    padding-top: 7px;
-  }
-
-  li:first-child {
-    border: 0;
-  }
-
-  li.loading {
-    letter-spacing: 8px;
-    text-align: center;
-  }
-
-  li.status-completed {
-    color: gray;
-  }
+.tasklist-row {
+  background: black;
+  color: white;
+  letter-spacing: 2px;
 }
 
+.task-row {
+  border-top: 2px solid gray;
+  padding: 5px;
+  padding-top: 7px;
+}
+
+.task-row:first-child {
+  border: 0;
+}
+
+.loading {
+  letter-spacing: 8px;
+  text-align: center;
+}
+
+.status-completed {
+  color: gray;
+}
 
 .footer {
-
   border-bottom-left-radius: 8px;
   border-bottom-right-radius: 8px;
 
@@ -91,7 +85,6 @@ ul.tasks {
 // icons
 .icon-remove-circle {
   color: #D0D0D0;
-  float: right;
   font-size: 1.4em;
   margin-right: -7px;
   margin-top: -1px;
@@ -106,7 +99,6 @@ ul.tasks {
 }
 
 .icon-plus {
-  float: right;
   padding-top: 3px;
   margin-right: -2px;
 }

@@ -20,17 +20,18 @@
     <!-- list of taskLists -->
     <ul class="tasklists" ng-cloak>
       <li ng-repeat="list in taskLists">
-        <div>
-          <a ng-click="toggle()" class="icon-chevron-{{listIcon()}}"></a>
-          <span>{{list.title}}</span>
-          <a class="icon-plus"></a>
+        <div class="tasklist-row">
+          <a ng-click="toggle()" class="left" ng-class="listIcon()"></a>
+          <a class="icon-plus right"></a>
+          <div contentEditable="true" class="tasklist-title">{{list.title}}</div>
         </div>
 
         <!-- list of tasks -->
         <ul ng-show="tasksVisible" class="tasks">
-          <li ng-repeat="task in list.$tasks" class="status-{{task.status}}">
-            <a ng-click="complete(task)" class="icon-check"></a> {{task.title}}
-            <a ng-click="remove(task)" ng-class="confirmIcon()" class="icon-remove-circle"></a>
+          <li ng-repeat="task in list.$tasks" class="task-row status-{{task.status}}">
+            <a ng-click="complete(task)" class="icon-check left"></a>
+            <a ng-click="remove(task)" ng-class="confirmIcon()" class="icon-remove-circle right"></a>
+            <div contentEditable="true" class="task-title">{{task.title}}</div>
           </li>
           <li ng-show="list.$tasksLoading" class="status loading">...loading...</li>
         </ul>
