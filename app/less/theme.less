@@ -1,0 +1,87 @@
+body {
+  background: #E0E0E0;
+
+  font-family: "Marker Felt";
+  font-size: 1.4em;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul {
+  list-style: none;
+}
+
+.border {
+  border: 2px solid black;
+  border-radius: 12px;
+
+  background: white;
+}
+
+.photo {
+  border-top-right-radius: 12px;
+}
+
+
+
+ul.tasklists {
+  li {
+    div {
+      padding: 5px;
+      background: black;
+      color: white;
+      letter-spacing: 2px;
+    }
+  }
+}
+
+ul.tasks {
+  li {
+    border-top: 2px solid gray;
+    padding: 5px;
+  }
+
+  li:first-child {
+    border: 0;
+  }
+}
+
+
+.footer {
+
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+
+  background: black;
+  color: white;
+
+  font-size: 0.7em;
+  text-align: center;
+  padding-top: 7px;
+
+  a:hover {
+    text-decoration: underline;
+  }
+}
+
+
+// icons
+.icon-remove-circle {
+  color: #D0D0D0;
+  float: right;
+  font-size: 1.4em;
+  margin-right: -7px;
+}
+
+.icon-remove-circle:hover::before {
+  content: "\f057";
+}
+
+.icon-plus {
+  float: right;
+  padding-top: 4px;
+  margin-right: -2px;
+}
