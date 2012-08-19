@@ -3,8 +3,10 @@
   <title ng-bind-template="{{user.name}}'s Task Manager">Task Manager</title>
 
   <link href="lib/font-awesome/css/font-awesome.css" rel="stylesheet" type="text/css">
+  <!-- APP-CSS -->
   <link href="css/layout.css" rel="stylesheet" type="text/css">
   <link href="css/theme.css" rel="stylesheet" type="text/css">
+  <!-- APP-CSS-END -->
 </head>
 <body>
 
@@ -49,9 +51,9 @@
 
 
   <!-- AngularJS -->
-  <script src="lib/angular.min.js" type="text/javascript"></script>
+  <script src="lib/angular/angular.js" type="text/javascript"></script>
 
-  <!-- Task Manager APP code -->
+  <!-- APP-JS -->
   <script src="js/app.js" type="text/javascript"></script>
   <script src="js/controllers/Root.js" type="text/javascript"></script>
   <script src="js/services/authHttp.js" type="text/javascript"></script>
@@ -60,6 +62,7 @@
   <script src="js/model/Task.js" type="text/javascript"></script>
   <script src="js/directives/contentEditable.js" type="text/javascript"></script>
   <script src="js/by-pass-auth.js" type="text/javascript"></script>
+  <!-- APP-JS-END -->
 
   <!-- Google Auth API library -->
   <script src="https://apis.google.com/js/auth.js?onload=onAuthLibLoad"></script>

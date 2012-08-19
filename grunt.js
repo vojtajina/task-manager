@@ -4,8 +4,8 @@ module.exports = function(grunt) {
 
   grunt.initConfig({
     meta: {
-      prefix: '(function(angular, gapi) {',
-      suffix: '})(window.angular, window.gapi);',
+      prefix: '(function(angular, window) {',
+      suffix: '})(window.angular, window);',
       banner: '/* <%= manifest.name %> - v<%= manifest.version %> - ' +
         '<%= grunt.template.today("yyyy-mm-dd") %> */'
     },

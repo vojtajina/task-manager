@@ -8,12 +8,12 @@ SCOPES = [
   'https://www.googleapis.com/auth/userinfo.profile'
 ]
 
-onAuthLibLoad = ->
+window.onAuthLibLoad = ->
   authorize handleAuthResult, true
 
 authorize = (callback, immediate) ->
   setTimeout ->
-    gapi.auth.authorize {client_id: CLIENT_ID, scope: SCOPES, immediate: immediate}, callback
+    window.gapi.auth.authorize {client_id: CLIENT_ID, scope: SCOPES, immediate: immediate}, callback
 
 
 handleAuthResult = (authResult) ->
