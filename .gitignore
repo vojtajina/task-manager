@@ -4,3 +4,4 @@ app/js/*
 app/css/*
 
 test/unit/**/*.js
+node_modules/*
