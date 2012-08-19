@@ -9,9 +9,9 @@
 
   <div ng-controller="Root" class="border">
 
-    <a href=""><img class="photo" src="https://lh4.googleusercontent.com/-kRXrNRyykNI/AAAAAAAAAAI/AAAAAAAAASg/p5NienuORDU/photo.jpg"></a>
+    <a ng-href="{{user.link}}"><img class="photo" ng-src="{{user.picture}}"></a>
 
-    <h1 class="name">Vojta Jina's</h1>
+    <h1 class="name">{{user.name}}'s</h1>
     <h1>Task Manager</h1>
 
     <ul class="tasklists">

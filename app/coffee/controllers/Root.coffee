@@ -1,4 +1,4 @@
-TM.controller 'Root',  ($scope, TaskList) ->
+TM.controller 'Root',  ($scope, TaskList, authHttp) ->
   $scope.taskLists = TaskList.query()
 
   $scope.toggle = ->
@@ -22,3 +22,8 @@ TM.controller 'Root',  ($scope, TaskList) ->
     else
       task.status = 'completed'
     task.$save()
+
+  # load user info
+  authHttp.get('https://www.googleapis.com/oauth2/v2/userinfo').success (data) ->
+    $scope.user = data
+    console.log data
