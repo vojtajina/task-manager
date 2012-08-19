@@ -3,11 +3,12 @@ TM = angular.module 'TM', []
 
 # AUTH
 CLIENT_ID = '522804721863.apps.googleusercontent.com'
-API_KEY = 'AIzaSyCGVpst99fnZjmNRaL3S5IYZdkUzGdHE40'
-SCOPES = ['https://www.googleapis.com/auth/tasks', 'https://www.googleapis.com/auth/plus.me']
+SCOPES = [
+  'https://www.googleapis.com/auth/tasks'
+  'https://www.googleapis.com/auth/userinfo.profile'
+]
 
 onAuthLibLoad = ->
-  gapi.client.setApiKey API_KEY
   authorize handleAuthResult, true
 
 authorize = (callback, immediate) ->
@@ -17,13 +18,10 @@ authorize = (callback, immediate) ->
 
 handleAuthResult = (authResult) ->
   if authResult and not authResult.error
-    console.log 'AUTHORIZED'
-    angular.bootstrap document.body, ['TM']
+    handleAuthorized authResult.access_token
   else
     authorize handleAuthResult, false
 
-
-
-# bypass auth during development
-onAuthLibLoad = -> null
-TM.value 'ACCESS_TOKEN', 'ya29.AHES6ZRQndRAPfSD-_Z5jzbaoTPhhD8NBwZNxEiFEELKs3OsIcgnTA'
+handleAuthorized = (token) ->
+  TM.value 'ACCESS_TOKEN', token
+  angular.bootstrap document, ['TM']
