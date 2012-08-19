@@ -1,20 +1,24 @@
-<html>
+<html ng-controller="Root">
 <head>
-  <title></title>
+  <title ng-bind-template="{{user.name}}'s Task Manager">Task Manager</title>
+
+  <link href="lib/font-awesome/css/font-awesome.css" rel="stylesheet" type="text/css">
   <link href="css/layout.css" rel="stylesheet" type="text/css">
   <link href="css/theme.css" rel="stylesheet" type="text/css">
-  <link href="lib/font-awesome/css/font-awesome.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 
-  <div ng-controller="Root" class="border">
+  <div class="border">
 
+    <!-- header -->
     <a ng-href="{{user.link}}"><img class="photo" ng-src="{{user.picture}}"></a>
 
-    <h1 class="name">{{user.name}}'s</h1>
-    <h1>Task Manager</h1>
+    <h1 ng-hide="user" class="status">Authorizing...</h1>
+    <h1 ng-show="user" ng-cloak>{{user.name}}'s</h1>
+    <h1 class="title">Task Manager</h1>
 
-    <ul class="tasklists">
+    <!-- list of taskLists -->
+    <ul class="tasklists" ng-cloak>
       <li ng-repeat="list in taskLists">
         <div>
           <a ng-click="toggle()" class="icon-chevron-{{listIcon()}}"></a>
@@ -22,17 +26,23 @@
           <a class="icon-plus"></a>
         </div>
 
+        <!-- list of tasks -->
         <ul ng-show="tasksVisible" class="tasks">
-          <li ng-show="list.$tasksLoading" class="loading">...loading...</li>
           <li ng-repeat="task in list.$tasks" class="status-{{task.status}}">
             <a ng-click="complete(task)" class="icon-check"></a> {{task.title}}
             <a ng-click="remove(task)" ng-class="confirmIcon()" class="icon-remove-circle"></a>
           </li>
+          <li ng-show="list.$tasksLoading" class="status loading">...loading...</li>
         </ul>
       </li>
     </ul>
 
-    <div class="footer">Powered by <a href="http://angularjs.org" target="_blank">AngularJS</a> &amp; <a href="https://developers.google.com/appengine/" target="_blank">Google AppEngine</a>.</div>
+    <!-- footer -->
+    <div class="footer">Powered by
+      <a href="https://developers.google.com/appengine/" target="_blank">Google AppEngine</a> &amp;
+      <a href="http://angularjs.org" target="_blank">AngularJS</a>.
+      Source on <a href="https://github.com/vojtajina/task-manager" target="_blank">GitHub</a>.
+    </div>
 
   </div>
 
