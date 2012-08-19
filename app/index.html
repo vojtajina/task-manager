@@ -23,7 +23,7 @@
         <div class="tasklist-row">
           <a ng-click="toggle()" class="left" ng-class="listIcon()"></a>
           <a class="icon-plus right"></a>
-          <div contentEditable="true" class="tasklist-title">{{list.title}}</div>
+          <div ng-model="list.title" ng-change="list.$save()" contentEditable="true" class="tasklist-title"></div>
         </div>
 
         <!-- list of tasks -->
@@ -31,7 +31,7 @@
           <li ng-repeat="task in list.$tasks" class="task-row status-{{task.status}}">
             <a ng-click="complete(task)" class="icon-check left"></a>
             <a ng-click="remove(task)" ng-class="confirmIcon()" class="icon-remove-circle right"></a>
-            <div contentEditable="true" class="task-title">{{task.title}}</div>
+            <div ng-model="task.title" ng-change="task.$save()" contentEditable="true" class="task-title"></div>
           </li>
           <li ng-show="list.$tasksLoading" class="status loading">...loading...</li>
         </ul>
@@ -58,6 +58,7 @@
   <script src="js/services/authHttp.js" type="text/javascript"></script>
   <script src="js/model/TaskList.js" type="text/javascript"></script>
   <script src="js/model/Task.js" type="text/javascript"></script>
+  <script src="js/directives/contentEditable.js" type="text/javascript"></script>
   <script src="js/by-pass-auth.js" type="text/javascript"></script>
 
   <!-- Google Auth API library -->

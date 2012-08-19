@@ -14,15 +14,12 @@ TM.factory 'TaskList', (authHttp, Task) ->
         new TaskList item
 
 
-  TaskList.create = (taskList) ->
-    authHttp.post(URL, taskList).then (response) ->
+  TaskList.save = (taskList) ->
+    if taskList.id then authHttp.put(URL + '/' + taskList.id, taskList).then (response) ->
+      console.log 'UPDATED', response
+    else authHttp.post(URL, taskList).then (response) ->
       # TODO(vojta): update object with the response
-      console.log response
-
-
-  TaskList.update = (taskList) ->
-    authHttp.patch(URL + '/' + taskList.id).then (response) ->
-      console.log response
+      console.log 'CREATED', response
 
 
   TaskList.remove = (taskList) ->
@@ -31,7 +28,7 @@ TM.factory 'TaskList', (authHttp, Task) ->
 
 
   TaskList.prototype.$save = ->
-    if this.id then TaskList.update(@) else TaskList.create(@)
+    TaskList.save @
 
 
   TaskList.prototype.$remove = ->

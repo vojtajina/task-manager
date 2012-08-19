@@ -17,10 +17,9 @@ TM.factory 'Task', (authHttp) ->
       console.log response
 
 
-  Task.update = (task) ->
+  Task.save = (task) ->
     authHttp.put(task.selfLink, task).then (response) ->
       console.log response
-
 
 
   Task.prototype.$remove = ->
@@ -28,7 +27,7 @@ TM.factory 'Task', (authHttp) ->
 
 
   Task.prototype.$save = ->
-    Task.update @
+    Task.save @
 
 
   Task
