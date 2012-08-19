@@ -16,15 +16,13 @@ TM.factory 'TaskList', (authHttp, Task) ->
 
   TaskList.save = (taskList) ->
     if taskList.id then authHttp.put(URL + '/' + taskList.id, taskList).then (response) ->
-      console.log 'UPDATED', response
+      angular.extend taskList, response.data
     else authHttp.post(URL, taskList).then (response) ->
-      # TODO(vojta): update object with the response
-      console.log 'CREATED', response
+      angular.extend taskList, response.data
 
 
   TaskList.remove = (taskList) ->
-    authHttp.remove(URL + '/' + taskList.id).then (response) ->
-      console.log response
+    authHttp.remove(URL + '/' + taskList.id)
 
 
   TaskList.prototype.$save = ->

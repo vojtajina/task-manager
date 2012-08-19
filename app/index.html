@@ -22,7 +22,7 @@
       <li ng-repeat="list in taskLists">
         <div class="tasklist-row">
           <a ng-click="toggle()" class="left" ng-class="listIcon()"></a>
-          <a class="icon-plus right"></a>
+          <a ng-click="addTask()" class="icon-plus right"></a>
           <div ng-model="list.title" ng-change="list.$save()" contentEditable="true" class="tasklist-title"></div>
         </div>
 
