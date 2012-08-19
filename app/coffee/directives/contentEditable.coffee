@@ -1,4 +1,4 @@
-TM.directive 'contenteditable', ->
+TM.directive 'contenteditable', (focusLastRow) ->
   require: '?ngModel'
   link: (scope, elm, attr, ngModel) ->
     if not ngModel then return
@@ -17,3 +17,7 @@ TM.directive 'contenteditable', ->
         e.preventDefault()
         # loose focus trick (focus first <a> on the page)
         document.querySelectorAll('a')[0].focus()
+
+    # add reference to last created contentEditable field
+    # yep, super hackery... I know...
+    focusLastRow.setElm elm

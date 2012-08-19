@@ -1,4 +1,4 @@
-TM.controller 'Root',  ($scope, TaskList, authHttp, Task) ->
+TM.controller 'Root',  ($scope, TaskList, authHttp, Task, focusLastRow) ->
   $scope.taskLists = TaskList.query()
 
   # TODO(vojta): refactor to more controllers to get rid off using "this"
@@ -27,6 +27,7 @@ TM.controller 'Root',  ($scope, TaskList, authHttp, Task) ->
   $scope.addTask = ->
     @list.$tasks.unshift new Task {listId: @list.id}
     @toggle true
+    focusLastRow()
 
 
   # load user info
