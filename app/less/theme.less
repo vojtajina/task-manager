@@ -31,6 +31,7 @@ ul.tasklists {
   li {
     div {
       padding: 5px;
+      padding-top: 7px;
       background: black;
       color: white;
       letter-spacing: 2px;
@@ -42,10 +43,20 @@ ul.tasks {
   li {
     border-top: 2px solid gray;
     padding: 5px;
+    padding-top: 7px;
   }
 
   li:first-child {
     border: 0;
+  }
+
+  li.loading {
+    letter-spacing: 8px;
+    text-align: center;
+  }
+
+  li.status-completed {
+    color: gray;
   }
 }
 
@@ -74,14 +85,23 @@ ul.tasks {
   float: right;
   font-size: 1.4em;
   margin-right: -7px;
+  margin-top: -1px;
 }
 
 .icon-remove-circle:hover::before {
   content: "\f057";
 }
 
+.confirm-remove {
+  color: red;
+}
+
 .icon-plus {
   float: right;
-  padding-top: 4px;
+  padding-top: 3px;
   margin-right: -2px;
+}
+
+.status-needsAction .icon-check:before {
+  content: "\f096";
 }

@@ -7,7 +7,7 @@
 </head>
 <body>
 
-  <div class="border">
+  <div ng-controller="Root" class="border">
 
     <a href=""><img class="photo" src="https://lh4.googleusercontent.com/-kRXrNRyykNI/AAAAAAAAAAI/AAAAAAAAASg/p5NienuORDU/photo.jpg"></a>
 
@@ -17,20 +17,22 @@
     <ul class="tasklists">
       <li ng-repeat="list in taskLists">
         <div>
-          <a class="icon-chevron-right"></a>
+          <a ng-click="toggle()" class="icon-chevron-{{listIcon()}}"></a>
           <span>{{list.title}}</span>
           <a class="icon-plus"></a>
         </div>
 
-        <ul class="tasks">
-          <li ng-repeat="task in list.$tasks">
-            <a class="icon-check"></a> {{task.title}} <a class="icon-remove-circle"></a>
+        <ul ng-show="tasksVisible" class="tasks">
+          <li ng-show="list.$tasksLoading" class="loading">...loading...</li>
+          <li ng-repeat="task in list.$tasks" class="status-{{task.status}}">
+            <a ng-click="complete(task)" class="icon-check"></a> {{task.title}}
+            <a ng-click="remove(task)" ng-class="confirmIcon()" class="icon-remove-circle"></a>
           </li>
         </ul>
       </li>
     </ul>
 
-    <div class="footer">Powered by <a href="http://angularjs.org">AngularJS</a> &amp; <a href="https://developers.google.com/appengine/">Google AppEngine</a>.</div>
+    <div class="footer">Powered by <a href="http://angularjs.org" target="_blank">AngularJS</a> &amp; <a href="https://developers.google.com/appengine/" target="_blank">Google AppEngine</a>.</div>
 
   </div>
 
