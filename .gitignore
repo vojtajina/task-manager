@@ -1,0 +1,6 @@
+*.pyc
+
+app/js/*
+app/css/*
+
+test/unit/**/*.js
