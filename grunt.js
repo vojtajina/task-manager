@@ -45,10 +45,21 @@ module.exports = function(grunt) {
         files: 'app/less/*.less',
         tasks: 'less:app'
       }
+    },
+    coffeelint: {
+      app: 'app/**/*.coffee',
+      tests: 'test/**/*.coffee'
+    },
+    coffeelintOptions: {
+      max_line_length: {
+        value: 100,
+        level: 'error'
+      }
     }
   });
 
   grunt.loadTasks('tasks');
+  grunt.loadNpmTasks('grunt-coffeelint');
   // grunt.registerTask('build', 'less concat min');
   // grunt.registerTask('default', 'clean build pack');
 };
