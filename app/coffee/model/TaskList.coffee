@@ -3,8 +3,8 @@ TM.factory 'TaskList', (authHttp, Task) ->
 
   TaskList = (data) ->
     angular.extend @, data
-    @$tasks = null
-    @$tasksLoading = false
+    @$tasks = []
+    @$tasksLoading = @$tasksLoaded = false
     @
 
 
@@ -34,12 +34,13 @@ TM.factory 'TaskList', (authHttp, Task) ->
 
 
   TaskList.prototype.$loadTasks = ->
-    if not @$tasks and not @$tasksLoading
+    if not @$tasksLoaded and not @$tasksLoading
       @$tasksLoading = true
 
       Task.query(@id).then (tasks) =>
-        @$tasks = tasks
+        @$tasks = @$tasks.concat tasks
         @$tasksLoading = false
+        @$tasksLoaded = true
 
 
 

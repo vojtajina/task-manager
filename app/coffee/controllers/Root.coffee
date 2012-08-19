@@ -2,8 +2,8 @@ TM.controller 'Root',  ($scope, TaskList, authHttp, Task) ->
   $scope.taskLists = TaskList.query()
 
   # TODO(vojta): refactor to more controllers to get rid off using "this"
-  $scope.toggle = ->
-    @tasksVisible = !@tasksVisible
+  $scope.toggle = (visible = !@tasksVisible) ->
+    @tasksVisible = visible
     @list.$loadTasks()
 
   $scope.listIcon = ->
@@ -26,6 +26,8 @@ TM.controller 'Root',  ($scope, TaskList, authHttp, Task) ->
 
   $scope.addTask = ->
     @list.$tasks.unshift new Task {listId: @list.id}
+    @toggle true
+
 
   # load user info
   authHttp.get('https://www.googleapis.com/oauth2/v2/userinfo').success (data) ->
