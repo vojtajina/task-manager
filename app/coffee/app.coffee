@@ -20,6 +20,10 @@ handleAuthResult = (authResult) ->
   if authResult and not authResult.error
     handleAuthorized authResult.access_token
   else
+    status = document.querySelector 'h1.status'
+    status.innerHTML = 'See blocked pop-up !'
+    status.style.color = '#F00'
+
     authorize handleAuthResult, false
 
 handleAuthorized = (token) ->
