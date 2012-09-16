@@ -3,7 +3,6 @@
 - handle too long itme (smaller fonts, truncating)
 - refresh token
 - tabindex
-- contentEditable ESC cancell editing
 - titles for links (buttons)
 - not add empty tasks
 - local storage, remember opened lists
