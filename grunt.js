@@ -60,6 +60,6 @@ module.exports = function(grunt) {
 
   grunt.loadTasks('tasks');
   grunt.loadNpmTasks('grunt-coffeelint');
-  // grunt.registerTask('build', 'less concat min');
-  // grunt.registerTask('default', 'clean build pack');
+  grunt.registerTask('deploy', 'coffee less concat build appengine-update');
+  grunt.registerTask('default', 'coffee less');
 };
