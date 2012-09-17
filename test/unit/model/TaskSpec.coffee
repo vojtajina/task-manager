@@ -62,3 +62,28 @@ describe 'model Task', ->
         expect(item instanceof Task).toBe(true) for item in items
 
       flush()
+
+
+  describe '$toggleCompleted', ->
+
+    it 'should set status to completed if needsAction', ->
+      task = new Task()
+      spyOn task, '$save'
+
+      task.status = 'needsAction'
+      task.$toggleCompleted()
+
+      expect(task.status).toBe 'completed'
+      expect(task.$save).toHaveBeenCalled()
+
+
+    it 'should clear completed and set status to needsAction if completed', ->
+      task = new Task()
+      spyOn task, '$save'
+
+      task.status = 'completed'
+      task.$toggleCompleted()
+
+      expect(task.status).toBe 'needsAction'
+      expect(task.completed).toBe null
+      expect(task.$save).toHaveBeenCalled()

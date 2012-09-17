@@ -15,15 +15,6 @@ TM.controller 'Root',  ($scope, TaskList, authHttp, Task, focusLastRow) ->
   $scope.confirmIcon = ->
     if @confirmRemove then 'confirm-remove' else ''
 
-  # TODO(vojta): move to Task.$complete or $toggle
-  $scope.complete = (task) ->
-    if task.status is 'completed'
-      task.status = 'needsAction'
-      task.completed = null
-    else
-      task.status = 'completed'
-    task.$save()
-
   $scope.addTask = ->
     @list.$tasks.unshift new Task {listId: @list.id}
     @toggle true

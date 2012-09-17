@@ -33,4 +33,14 @@ TM.factory 'Task', (authHttp) ->
     Task.save @
 
 
+  Task.prototype.$toggleCompleted = (task) ->
+    if @status is 'completed'
+      @status = 'needsAction'
+      @completed = null
+    else
+      @status = 'completed'
+
+    @$save()
+
+
   Task

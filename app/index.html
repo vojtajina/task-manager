@@ -31,7 +31,7 @@
         <!-- list of tasks -->
         <ul ng-show="tasksVisible" class="tasks">
           <li ng-repeat="task in list.$tasks" class="task-row status-{{task.status}}">
-            <a ng-click="complete(task)" class="icon-check left"></a>
+            <a ng-click="task.$toggleCompleted()" class="icon-check left"></a>
             <a ng-click="remove(task)" ng-class="confirmIcon()" class="icon-remove-circle right"></a>
             <div ng-model="task.title" ng-change="task.$save()" contentEditable="true" class="task-title"></div>
           </li>
