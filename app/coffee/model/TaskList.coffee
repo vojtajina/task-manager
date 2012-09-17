@@ -43,8 +43,7 @@ TM.factory 'TaskList', (authHttp, Task) ->
         @$tasksLoaded = true
 
 
-
-  TaskList.prototype.removeTask = (task) ->
+  TaskList.prototype.$removeTask = (task) ->
     # remove from collection
     idx = @$tasks.indexOf task
     @$tasks.splice idx, 1

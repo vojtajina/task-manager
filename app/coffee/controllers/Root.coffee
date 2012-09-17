@@ -10,7 +10,7 @@ TM.controller 'Root',  ($scope, TaskList, authHttp, Task, focusLastRow) ->
     if @tasksVisible then 'icon-chevron-down' else 'icon-chevron-right'
 
   $scope.remove = (task) ->
-    if @confirmRemove then @list.removeTask task else @confirmRemove = true
+    if @confirmRemove then @list.$removeTask task else @confirmRemove = true
 
   $scope.confirmIcon = ->
     if @confirmRemove then 'confirm-remove' else ''
