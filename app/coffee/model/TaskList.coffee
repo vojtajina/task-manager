@@ -1,5 +1,6 @@
+TASKLIST_URL = 'https://www.googleapis.com/tasks/v1/users/@me/lists'
+
 TM.factory 'TaskList', (authHttp, Task) ->
-  URL = 'https://www.googleapis.com/tasks/v1/users/@me/lists'
 
   TaskList = (data) ->
     angular.extend @, data
@@ -9,20 +10,20 @@ TM.factory 'TaskList', (authHttp, Task) ->
 
 
   TaskList.query = ->
-    authHttp.get(URL).then (response) ->
+    authHttp.get(TASKLIST_URL).then (response) ->
       response.data.items.map (item) ->
         new TaskList item
 
 
   TaskList.save = (taskList) ->
-    if taskList.id then authHttp.put(URL + '/' + taskList.id, taskList).then (response) ->
+    if taskList.id then authHttp.put(TASKLIST_URL + '/' + taskList.id, taskList).then (response) ->
       angular.extend taskList, response.data
-    else authHttp.post(URL, taskList).then (response) ->
+    else authHttp.post(TASKLIST_URL, taskList).then (response) ->
       angular.extend taskList, response.data
 
 
   TaskList.remove = (taskList) ->
-    authHttp.remove(URL + '/' + taskList.id)
+    authHttp.remove(TASKLIST_URL + '/' + taskList.id)
 
 
   TaskList.prototype.$save = ->
@@ -45,13 +46,11 @@ TM.factory 'TaskList', (authHttp, Task) ->
 
   TaskList.prototype.$removeTask = (task) ->
     # remove from collection
-    idx = @$tasks.indexOf task
-    @$tasks.splice idx, 1
+    @$tasks.splice @$tasks.indexOf(task), 1
 
     # destroy
     # TODO(vojta): handle failure
     task.$remove()
-
 
 
   TaskList
