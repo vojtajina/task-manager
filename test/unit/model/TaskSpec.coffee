@@ -39,8 +39,26 @@ RESP_TASKS = """
 
 describe 'model Task', ->
 
-  $http = Task = null
+  $http = Task = flush = null
 
-  beforeEach inject (_Task_, $httpBackend) ->
+  beforeEach module 'TM', 'mocks.ACCESS_TOKEN'
+
+  beforeEach inject (_Task_, $httpBackend, $rootScope) ->
     Task = _Task_
     $http = $httpBackend
+
+    flush = ->
+      $httpBackend.flush()
+      $rootScope.$digest()
+
+
+  describe 'query', ->
+
+    it 'should return a promise with parsed items', ->
+      $http.expectGET(TASK_URL + 'fake-list-id/tasks').respond RESP_TASKS
+
+      Task.query('fake-list-id').then (items) ->
+        expect(items.length).toBe 3
+        expect(item instanceof Task).toBe(true) for item in items
+
+      flush()
