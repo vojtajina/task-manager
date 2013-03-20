@@ -29,3 +29,7 @@ handleAuthResult = (authResult) ->
 handleAuthorized = (token) ->
   TM.value 'ACCESS_TOKEN', token
   angular.bootstrap document, ['TM']
+  
+TM.config(['$httpProvider', ($httpProvider) ->
+    delete $httpProvider.defaults.headers.common["X-Requested-With"]
+])
